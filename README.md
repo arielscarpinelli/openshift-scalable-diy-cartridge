@@ -1,4 +1,4 @@
-# OpenShift DIY Cartridge
+# OpenShift DIY Cartridge - Scalable version
 This cartridge is documented in the [Cartridge Guide](http://openshift.github.io/documentation/oo_cartridge_guide.html#diy).
 
 ## To install
