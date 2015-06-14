@@ -1,21 +1,22 @@
 ---
 Name: diy
 Cartridge-Short-Name: DIY
-Display-Name: Do-It-Yourself 0.1
-Description: The Do-It-Yourself (DIY) application type is a blank slate for trying
+Display-Name: Do-It-Yourself 0.2
+Description: Scalable version of the Do-It-Yourself (DIY) application type is a blank slate for trying
   unsupported languages, frameworks, and middleware on OpenShift. See the community
   site for examples of bringing your favorite framework to OpenShift.
-Version: '0.1'
+Version: '0.2'
 License: ASL 2.0
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
 Cartridge-Version: 0.0.13
-Source-Url: https://github.com/openshift-cartridges/openshift-diy-cartridge.git
+Source-Url: https://github.com/arielscarpinelli/openshift-scalable-diy-cartridge.git
 Compatible-Versions:
 - 0.0.10
 - 0.0.11
 - 0.0.12
-Cartridge-Vendor: developercorey
-Vendor: developercorey
+- 0.1
+Cartridge-Vendor: arielscarpinelli
+Vendor: arielscarpinelli
 Categories:
 - web_framework
 - experimental
@@ -36,6 +37,22 @@ Scaling:
 Group-Overrides:
 - components:
   - web-proxy
+Publishes:
+  get-doc-root:
+    Type: "FILESYSTEM:doc-root"
+  publish-http-url:
+    Type: "NET_TCP:httpd-proxy-info"
+  publish-gear-endpoint:
+    Type: "NET_TCP:gear-endpoint-info"
+Subscribes:
+  set-env:
+    Type: ENV:*
+  set-db-connection-info:
+    Type: "ENV:NET_TCP:db:connection-info"
+    Required: false
+  set-nosql-db-connection-info:
+    Type: "ENV:NET_TCP:nosqldb:connection-info"
+    Required : false
 Endpoints:
 - Private-IP-Name: IP
   Private-Port-Name: PORT
